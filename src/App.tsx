@@ -70,36 +70,36 @@ function App() {
   const extraInputClass = 'w-20 ml-4 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
+    <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
       <div id="preview-area" className="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <Calculator className="w-8 h-8 text-indigo-600" />
+            <Calculator className="w-5 h-5 text-indigo-600" />
             <input
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)} // Handle title change
-              className="text-2xl font-bold text-gray-800 bg-transparent border-none focus:outline-none"
+              className="text-xl font-bold text-gray-800 bg-transparent border-none focus:outline-none"
             />
           </div>
-          <div className="text-right">
+          <div className="text-center -ml-16">
             <p className="text-sm text-gray-600">Date</p>
             <input
               type="date"
               value={values.date}
               onChange={e => setValues(prev => ({ ...prev, date: e.target.value }))} 
-              className="text-right bg-transparent font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1"
+              className="text-left bg-transparent font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1"
             />
           </div>
         </div>
 
         {/* Input Fields */}
-        <div className="space-y-4 mb-6 p-4 bg-gray-50 rounded-xl">
+        <div className="space-y-2 mb-2 p-2 bg-gray-50 rounded-xl">
           {['fb', 'gb', 'ch', 'dl'].map((field, index) => (
             <div key={index} className="flex items-center justify-between">
               <p className="text-lg font-bold text-gray-600">{field.toUpperCase()}</p>
-              <div className="flex items-center">
+              <div className="flex items-center ml-20 md:ml-0">
                 <input
                   type="number"
                   value={values[field as keyof typeof values]}
@@ -119,14 +119,14 @@ function App() {
         </div>
 
         {/* Summary */}
-        <div className="space-y-6">
+        <div className="space-y-1">
           {/* Kaam Summary */}
-          <div className="border-b pb-4">
-            <div className="flex justify-between items-center mb-2">
+          <div className="border-b pb-2">
+            <div className="flex justify-between items-center mb-1">
               <p className="font-medium text-gray-800">Kaam</p>
               <p className="font-semibold text-lg">{kaamTotal.toLocaleString()}</p>
             </div>
-            <div className="space-y-2 pl-4">
+            <div className="space-y-1 pl-4">
               <div className="flex justify-between text-red-600">
                 <p>K (10%)</p>
                 <p className="font-semibold">{k.toLocaleString()}</p>
@@ -143,8 +143,8 @@ function App() {
           </div>
 
           {/* Piche Ka Lena/Dena */}
-          <div className="border-b pb-4">
-            <div className="mb-4">
+          <div className="border-b pb-2">
+            <div className="mb-2">
               <label className="font-medium text-gray-800">Select</label>
               <select
                 value={selectedOption}
@@ -182,8 +182,8 @@ function App() {
           </div>
 
           {/* Jama/Diya */}
-          <div className="border-b pb-4">
-            <div className="mb-4">
+          <div className="border-b pb-2">
+            <div className="mb-2">
               <label className="font-medium text-gray-800">Select</label>
               <select
                 value={jamaOrDiya}
@@ -221,7 +221,7 @@ function App() {
           </div>
 
           {/* Lena/Dena Summary */}
-          <div className="bg-indigo-50 p-4 rounded-xl flex justify-between items-center">
+          <div className="bg-indigo-50 p-2 rounded-xl flex justify-between items-center">
             <p className="font-medium text-lg text-indigo-900">Final {getFinalLenaDena() < 0 ? 'Dena' : 'Lena'}</p>
             <p className="font-bold text-xl text-indigo-900">{Math.abs(getFinalLenaDena()).toLocaleString()}</p>
           </div>
