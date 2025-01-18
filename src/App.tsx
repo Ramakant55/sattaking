@@ -75,7 +75,6 @@ function App() {
         {/* Header */}
         <div className="flex items-center justify-evenly mb-4">
           <div className="flex items-center gap-1">
-            <Calculator className="w-5 h-5 text-indigo-600 -ml-6" />
             <input
               type="text"
               value={title}
