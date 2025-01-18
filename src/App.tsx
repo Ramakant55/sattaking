@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
+// import { Calculator } from 'lucide-react';
+// import html2canvas from 'html2canvas'; // Import html2canvas
 
 function App() {
-  // Function to format date as DD/MM/YYYY
-  const getCurrentDateFormatted = () => {
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-    const year = today.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
   const [values, setValues] = useState({
-    date: getCurrentDateFormatted(), // Automatically set the current date
+    date: '2025-01-17',
     fb: 0,
     fbExtra: 0,
     gb: 0,
@@ -59,6 +52,19 @@ function App() {
     return finalAmount;
   };
 
+  // Save as Image Functionality
+  // const handleSaveAsImage = () => {
+  //   const element = document.querySelector('#preview-area');
+  //   if (element) {
+  //     html2canvas(element).then(canvas => {
+  //       const link = document.createElement('a');
+  //       link.href = canvas.toDataURL('image/png');
+  //       link.download = 'ledger-preview.png'; // Name of the saved image
+  //       link.click();
+  //     });
+  //   }
+  // };
+
   // Input styles
   const inputClass = 'w-full bg-transparent font-semibold text-lg focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1';
   const extraInputClass = 'w-16 ml-4 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1';
@@ -76,12 +82,12 @@ function App() {
               className="text-xl font-bold text-gray-800 bg-transparent underline border-none focus:outline-none"
             />
           </div>
-          <div className="text-left -ml-40 md:-ml-0">
+          <div className="text-center -ml-40 md:-ml-0">
             <p className="text-sm text-gray-600">Date</p>
             <input
-              type="text"
+              type="date"
               value={values.date}
-              readOnly
+              onChange={e => setValues(prev => ({ ...prev, date: e.target.value }))} 
               className="text-left bg-transparent font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1"
             />
           </div>
