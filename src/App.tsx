@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator } from 'lucide-react';
+// import { Calculator } from 'lucide-react';
 // import html2canvas from 'html2canvas'; // Import html2canvas
 
 function App() {
@@ -79,7 +79,7 @@ function App() {
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)} // Handle title change
-              className="text-xl font-bold text-gray-800 bg-transparent border-none focus:outline-none"
+              className="text-xl font-bold text-gray-800 bg-transparent underline border-none focus:outline-none"
             />
           </div>
           <div className="text-center -ml-40 md:-ml-0">
