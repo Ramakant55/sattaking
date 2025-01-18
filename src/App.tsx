@@ -73,8 +73,8 @@ function App() {
     <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
       <div id="preview-area" className="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-evenly mb-8">
+          <div className="flex items-center gap-1">
             <Calculator className="w-5 h-5 text-indigo-600" />
             <input
               type="text"
@@ -83,7 +83,7 @@ function App() {
               className="text-xl font-bold text-gray-800 bg-transparent border-none focus:outline-none"
             />
           </div>
-          <div className="text-center -ml-16">
+          <div className="text-center ">
             <p className="text-sm text-gray-600">Date</p>
             <input
               type="date"
