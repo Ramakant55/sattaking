@@ -83,7 +83,7 @@ function App() {
               className="text-xl font-bold text-gray-800 bg-transparent border-none focus:outline-none"
             />
           </div>
-          <div className="text-center ">
+          <div className="text-center -ml-20">
             <p className="text-sm text-gray-600">Date</p>
             <input
               type="date"
