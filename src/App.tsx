@@ -67,7 +67,7 @@ function App() {
 
   // Input styles
   const inputClass = 'w-full bg-transparent font-semibold text-lg focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1';
-  const extraInputClass = 'w-20 ml-4 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1';
+  const extraInputClass = 'w-16 ml-4 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1';
 
   return (
     <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
@@ -98,7 +98,7 @@ function App() {
           {['fb', 'gb', 'ch', 'dl'].map((field, index) => (
             <div key={index} className="flex items-center justify-between">
               <p className="text-lg font-bold text-gray-600">{field.toUpperCase()}</p>
-              <div className="flex items-center ml-20 md:ml-0">
+              <div className="flex items-center ml-10 md:ml-0">
                 <input
                   type="number"
                   value={values[field as keyof typeof values]}
