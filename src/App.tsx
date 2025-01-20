@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 function App() {
-  // Function to format date to YYYY-MM-DD
-  const formatDateToYYYYMMDD = (date: Date) => {
+  // Function to format date to DD-MM-YYYY
+  const formatDateToDDMMYYYY = (date: Date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');  // Months are zero-based
     const day = String(date.getDate()).padStart(2, '0');
@@ -10,7 +10,7 @@ function App() {
   };
 
   const initialValues = {
-    date: formatDateToYYYYMMDD(new Date()), // Set to current date in YYYY-MM-DD format
+    date: formatDateToDDMMYYYY(new Date()), // Set to current date in DD-MM-YYYY format
     fb: 0,
     fbExtra: 0,
     gb: 0,
