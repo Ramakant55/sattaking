@@ -62,7 +62,7 @@ function App() {
   const extraInputClass = 'w-16 ml-4 text-sm bg-gray-100 rounded shadow-sm shadow-black px-2 py-1 text-center';
 
   return (
-    <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-10 flex items-center justify-center">
+    <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-2 flex items-center justify-center">
       <div id="preview-area" className="bg-white rounded-2xl shadow-sm shadow-black w-full max-w-2xl p-8">
         {/* Header */}
         <div className="flex items-center justify-between">
