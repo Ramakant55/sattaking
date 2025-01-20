@@ -58,14 +58,14 @@ function App() {
     setTitle('Satta King');
   };
 
-  const inputClass = 'w-full bg-transparent font-semibold text-lg focus:outline-none focus:ring-1 focus:ring-indigo-300 shadow-sm shadow-black rounded px-1 text-center';
+  const inputClass = 'w-full bg-transparent font-semibold text-lg focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1 text-center';
   const extraInputClass = 'w-16 ml-4 text-sm bg-gray-100 rounded shadow-sm shadow-black px-2 py-1 text-center';
 
   return (
-    <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
-      <div id="preview-area" className="bg-white rounded-2xl shadow-inner shadow-black w-full max-w-2xl p-8">
+    <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-10 flex items-center justify-center">
+      <div id="preview-area" className="bg-white rounded-2xl shadow-sm shadow-black w-full max-w-2xl p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <input
               type="text"
@@ -74,7 +74,7 @@ function App() {
               className="text-xl font-bold text-gray-800 bg-transparent  underline border-none focus:outline-none"
             />
           </div>
-          <div className="text-center">
+          <div className="text-center -ml-20">
             <p className="text-sm text-gray-600">Date</p>
             <input
               type="date"
@@ -142,7 +142,7 @@ function App() {
               <select
                 value={selectedOption}
                 onChange={e => setSelectedOption(e.target.value)}
-                className="w-full text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1"
+                className="w-full text-sm bg-gray-100  shadow-sm shadow-black rounded px-2 py-1"
               >
                 <option value="picheKaLena">Piche Ka Lena</option>
                 <option value="picheKaDena">Piche Ka Dena</option>
@@ -156,7 +156,7 @@ function App() {
                   type="number"
                   value={values.picheKaLena}
                   onChange={handleChange('picheKaLena')}
-                  className="w-32 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1"
+                  className="w-32 text-sm bg-gray-100 shadow-sm shadow-black rounded px-2 py-1"
                 />
               </div>
             )}
@@ -168,7 +168,7 @@ function App() {
                   type="number"
                   value={values.picheKaDena}
                   onChange={handleChange('picheKaDena')}
-                  className="w-32 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1"
+                  className="w-32 text-sm bg-gray-100 shadow-sm shadow-black rounded px-2 py-1"
                 />
               </div>
             )}
@@ -181,7 +181,7 @@ function App() {
               <select
                 value={jamaOrDiya}
                 onChange={e => setJamaOrDiya(e.target.value)}
-                className="w-full text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1"
+                className="w-full text-sm bg-gray-100 shadow-sm shadow-black rounded px-2 py-1"
               >
                 <option value="jama">Jma</option>
                 <option value="diya">Diya</option>
@@ -195,7 +195,7 @@ function App() {
                   type="number"
                   value={values.jama}
                   onChange={handleChange('jama')}
-                  className="w-32 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1"
+                  className="w-32 text-sm bg-gray-100 shadow-sm shadow-black rounded px-2 py-1"
                 />
               </div>
             )}
@@ -207,14 +207,14 @@ function App() {
                   type="number"
                   value={values.diya}
                   onChange={handleChange('diya')}
-                  className="w-32 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1"
+                  className="w-32 text-sm bg-gray-100 shadow-sm shadow-black rounded px-2 py-1"
                 />
               </div>
             )}
           </div>
 
           {/* Lena/Dena Summary */}
-          <div className="bg-indigo-50 p-2 rounded-xl flex justify-between items-center">
+          <div className="bg-indigo-50 p-2 rounded-xl flex justify-between items-center shadow-sm shadow-black">
             <p className="font-medium text-lg text-indigo-900">Final {getFinalLenaDena() < 0 ? 'Dena' : 'Lena'}</p>
             <p className="font-bold text-xl text-indigo-900">{Math.abs(getFinalLenaDena()).toLocaleString()}</p>
           </div>
@@ -223,7 +223,7 @@ function App() {
         <div className="flex justify-end mb-4">
           <button
             onClick={handleReset}
-            className="bg-red-500 text-white py-2 px-4 mt-5 rounded hover:bg-red-600"
+            className="bg-red-500 text-white py-2  px-4 mt-5 rounded hover:bg-red-600"
           >
             Reset
           </button>
