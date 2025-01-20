@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-// import { Calculator } from 'lucide-react';
-// import html2canvas from 'html2canvas'; // Import html2canvas
 
 function App() {
-  const [values, setValues] = useState({
-    date: '2025-01-17',
+  // Function to format date to YYYY-MM-DD
+  const formatDateToYYYYMMDD = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');  // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const initialValues = {
+    date: formatDateToYYYYMMDD(new Date()), // Set to current date in YYYY-MM-DD format
     fb: 0,
     fbExtra: 0,
     gb: 0,
@@ -17,11 +23,12 @@ function App() {
     picheKaDena: 0,
     jama: 0,
     diya: 0,
-  });
+  };
 
+  const [values, setValues] = useState(initialValues);
   const [selectedOption, setSelectedOption] = useState('picheKaLena');
-  const [jamaOrDiya, setJamaOrDiya] = useState('jama'); // Default to "Jama"
-  const [title, setTitle] = useState('Satta King'); // State for editable title
+  const [jamaOrDiya, setJamaOrDiya] = useState('jama');
+  const [title, setTitle] = useState('Satta King');
 
   const handleChange = (field: keyof typeof values) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value === '' ? 0 : parseFloat(e.target.value);
@@ -30,71 +37,56 @@ function App() {
 
   // Calculate totals
   const kaamTotal = values.fb + values.gb + values.ch + values.dl;
-
-  // Round 10% (`k`) to the nearest multiple of 5
-  const k = Math.round((kaamTotal * 0.1) / 5) * 5;
-
+  const k = (Math.round((kaamTotal * 0.1) / 5) * 5);
   const extraTotal = (values.fbExtra + values.gbExtra + values.chExtra + values.dlExtra) * 90;
-  const netKaam = kaamTotal - k - extraTotal; // Net amount after deductions
+  const netKaam = kaamTotal - k - extraTotal;
 
-  // Calculate final total including Piche Ka Lena/Dena and Jama/Diya
   const getFinalLenaDena = () => {
     let finalAmount = netKaam;
-
-    // Add/Subtract Piche Ka Lena/Dena
     finalAmount += values.picheKaLena;
     finalAmount -= values.picheKaDena;
-
-    // Add/Subtract Jama/Diya
     finalAmount -= values.jama;
     finalAmount += values.diya;
-
     return finalAmount;
   };
 
-  // Save as Image Functionality
-  // const handleSaveAsImage = () => {
-  //   const element = document.querySelector('#preview-area');
-  //   if (element) {
-  //     html2canvas(element).then(canvas => {
-  //       const link = document.createElement('a');
-  //       link.href = canvas.toDataURL('image/png');
-  //       link.download = 'ledger-preview.png'; // Name of the saved image
-  //       link.click();
-  //     });
-  //   }
-  // };
+  // Reset Functionality
+  const handleReset = () => {
+    setValues(initialValues);
+    setSelectedOption('picheKaLena');
+    setJamaOrDiya('jama');
+    setTitle('Satta King');
+  };
 
-  // Input styles
-  const inputClass = 'w-full bg-transparent font-semibold text-lg focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1';
-  const extraInputClass = 'w-16 ml-4 text-sm bg-gray-100 border border-gray-200 rounded px-2 py-1';
+  const inputClass = 'w-full bg-transparent font-semibold text-lg focus:outline-none focus:ring-1 focus:ring-indigo-300 shadow-sm shadow-black rounded px-1 text-center';
+  const extraInputClass = 'w-16 ml-4 text-sm bg-gray-100 rounded shadow-sm shadow-black px-2 py-1 text-center';
 
   return (
     <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
-      <div id="preview-area" className="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-8">
+      <div id="preview-area" className="bg-white rounded-2xl shadow-inner shadow-black w-full max-w-2xl p-8">
         {/* Header */}
-        <div className="flex items-center justify-evenly mb-4">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-1">
             <input
               type="text"
               value={title}
-              onChange={e => setTitle(e.target.value)} // Handle title change
-              className="text-xl font-bold text-gray-800 bg-transparent underline border-none focus:outline-none"
+              onChange={e => setTitle(e.target.value)}
+              className="text-xl font-bold text-gray-800 bg-transparent  underline border-none focus:outline-none"
             />
           </div>
-          <div className="text-center -ml-40 md:-ml-0">
+          <div className="text-center">
             <p className="text-sm text-gray-600">Date</p>
             <input
               type="date"
               value={values.date}
-              onChange={e => setValues(prev => ({ ...prev, date: e.target.value }))} 
+              onChange={e => setValues(prev => ({ ...prev, date: e.target.value }))}
               className="text-left bg-transparent font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-300 rounded px-1"
             />
           </div>
         </div>
 
         {/* Input Fields */}
-        <div className="space-y-2 mb-2 p-2 bg-gray-50 rounded-xl">
+        <div className="space-y-2 mb-2 p-4 bg-gray-50 rounded-xl shadow-sm shadow-black">
           {['fb', 'gb', 'ch', 'dl'].map((field, index) => (
             <div key={index} className="flex items-center justify-between">
               <p className="text-lg font-bold text-gray-600">{field.toUpperCase()}</p>
@@ -116,6 +108,8 @@ function App() {
             </div>
           ))}
         </div>
+
+      
 
         {/* Summary */}
         <div className="space-y-1">
@@ -225,8 +219,17 @@ function App() {
             <p className="font-bold text-xl text-indigo-900">{Math.abs(getFinalLenaDena()).toLocaleString()}</p>
           </div>
         </div>
-
+          {/* Reset Button */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={handleReset}
+            className="bg-red-500 text-white py-2 px-4 mt-5 rounded hover:bg-red-600"
+          >
+            Reset
+          </button>
+        </div>
       </div>
+      
     </div>
   );
 }
