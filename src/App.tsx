@@ -65,7 +65,7 @@ function App() {
     <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 p-2 flex items-center justify-center">
       <div id="preview-area" className="bg-white rounded-2xl shadow-sm shadow-black w-full max-w-2xl p-4">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-around">
           <div className="flex items-center gap-1">
             <input
               type="text"
@@ -74,7 +74,7 @@ function App() {
               className="text-xl font-bold text-gray-800 bg-transparent  underline border-none focus:outline-none"
             />
           </div>
-          <div className="text-center -ml-20">
+          <div className="text-center -ml-28">
             <p className="text-sm text-gray-600">Date</p>
             <input
               type="date"
